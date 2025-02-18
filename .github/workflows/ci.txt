@@ -1,0 +1,3 @@
+#rename to "ci.yml" when you're ready to set up CI/CD, otherwise you get the emails saying there is no workflow to run
+
+you add a new file for each push event I guess
