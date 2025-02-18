@@ -1,0 +1,21 @@
+services:
+  frontend:
+    build:
+      context: ./mobile-app
+      dockerfile: Dockerfile  # Make sure to point to the correct Dockerfile for frontend
+    ports:
+      - "19000:19000"  # Port for React Native dev server
+    volumes:
+      - ./mobile-app/wellnessappmobile:/app  # Mount wellnessappmobile folder into container
+    working_dir: /app
+    command: npm start  # Command to run React Native dev server
+    environment:
+      - NODE_ENV=development
+
+  backend:
+    build: ./backend-api
+    ports:
+      - "8000:8000"  # Port for FastAPI
+    volumes:
+      - ./backend-api:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000  # Run FastAPI server
